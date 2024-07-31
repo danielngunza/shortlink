@@ -4,6 +4,7 @@ import Menu from '../../components/Menu'
 import { useState } from 'react'
 import Modal from '../../components/Modal'
 import api from '../../servicos/api'
+import {saveLink} from '../../servicos/storelink'
 
 function Home() {
 
@@ -19,6 +20,8 @@ function Home() {
 
         setData(response.data);
         setShowModal(true)
+
+        saveLink('@encurtalink', response.data)
 
         setLink("")
 
