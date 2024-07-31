@@ -57,6 +57,15 @@
     background: transparent;
 }
 
+.empty{
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 @media (max-width: 750px){
     .links-container{
         width: 90%;

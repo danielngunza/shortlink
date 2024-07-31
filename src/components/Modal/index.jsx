@@ -5,7 +5,7 @@ export default function Modal({closeModal, content}){
 
    async function copyLink(){  
     await navigator.clipboard.writeText(content.link)
-    
+    alert("Link copiado com sucesso!")
     }
 
     return(
