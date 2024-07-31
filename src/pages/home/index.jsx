@@ -39,7 +39,7 @@ function Home() {
       <div className='logo'>
         <img src="/link.png" alt="ShortLink Logo" width={150} />
         <h1>ShortLink</h1>
-        <span>Encurte seu link aqui!</span>
+        <span>Deixe seus links mais curtos e charmosos em apenas um clique!</span>
       </div>
 
       <div className='area-input'>
@@ -51,7 +51,7 @@ function Home() {
           />
           </div>
           <button onClick={handleShortLink}>
-            Gerar Link Encurtado
+            Encurtar link
             </button>
       </div>
       <Menu></Menu>
