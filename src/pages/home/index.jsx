@@ -1,0 +1,67 @@
+import './home.css'
+import {FiLink} from 'react-icons/fi'
+import Menu from '../../components/Menu'
+import { useState } from 'react'
+import Modal from '../../components/Modal'
+import api from '../../servicos/api'
+
+function Home() {
+
+  const [link, setLink] = useState ("")
+  const [showModal, setShowModal] = useState(false)
+  const [data, setData] = useState({})
+
+ async function handleShortLink(){
+      try {
+        const response = await api.post('/shorten', {
+          long_url: link
+        })
+
+        setData(response.data);
+        setShowModal(true)
+
+        setLink("")
+
+      } catch {
+        alert("Ops... Parece que algo deu errado!")
+        setLink("")
+      }
+  }
+
+  return (
+    <div className='container-home'>
+
+      
+
+      <div className='logo'>
+        <img src="/link.png" alt="ShortLink Logo" width={150} />
+        <h1>ShortLink</h1>
+        <span>Encurte seu link aqui!</span>
+      </div>
+
+      <div className='area-input'>
+          <div>
+            <FiLink size={24} color='#fff'/>
+          <input placeholder='Cole seu link aqui...' 
+          value={link}
+          onChange={(e) => setLink(e.target.value)}
+          />
+          </div>
+          <button onClick={handleShortLink}>
+            Gerar Link Encurtado
+            </button>
+      </div>
+      <Menu></Menu>
+       
+       {showModal &&(
+        <Modal
+         closeModal={() =>setShowModal(false)}
+         content={data}
+         ></Modal>
+       )}
+      
+    </div>
+  )
+}
+
+export default Home
